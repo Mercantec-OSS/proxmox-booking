@@ -6,9 +6,17 @@
   import { goto, afterNavigate } from '$app/navigation';
 
   const { data } = $props();
-
   userStore.set(data.userInfo);
   vmListStore.set(data.vmData);
+
+  $effect(() => {
+    if (data.userInfo) {
+      userStore.set(data.userInfo);
+    }
+    if (data.vmData) {
+      vmListStore.set(data.vmData);
+    }
+  });
 
   let userAuthed = $derived($userStore.role === 'Admin' || $userStore.role === 'Teacher');
 
