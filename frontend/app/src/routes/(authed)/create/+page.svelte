@@ -40,7 +40,7 @@
   let selectTeacherOpen = $state(false);
 
   function handleStudentSelect(student) {
-    const [name, surname, id] = student.split(' ');
+    const [name, surname, id] = student.split('|');
     const parsedId = +id;
 
     if (parsedId === vmBookingInput.ownerId) {
@@ -54,7 +54,7 @@
   }
 
   function handleTeacherSelect(teacher) {
-    const [name, surname, id] = teacher.split(' ');
+    const [name, surname, id] = teacher.split('|');
     const parsedId = +id;
 
     if (parsedId === vmBookingInput.assignedId) {
@@ -177,9 +177,9 @@
                             {#each data.listOfUsers as user (user.id)}
                               {#if user.role === 'Student'}
                                 <Command.Item
-                                  value={`${user.name} ${user.surname} ${user.id}`}
+                                  value={`${user.name}|${user.surname}|${user.id}`}
                                   onmousedown={() => {
-                                    handleStudentSelect(`${user.name} ${user.surname} ${user.id}`);
+                                    handleStudentSelect(`${user.name}|${user.surname}|${user.id}`);
                                   }}
                                   class="items-start px-4 py-2"
                                 >
@@ -215,8 +215,8 @@
                             {#each data.listOfUsers as user (user.id)}
                               {#if user.role === 'Teacher'}
                                 <Command.Item
-                                  value={`${user.name} ${user.surname} ${user.id}`}
-                                  onmousedown={() => handleTeacherSelect(`${user.name} ${user.surname} ${user.id}`)}
+                                  value={`${user.name}|${user.surname}|${user.id}`}
+                                  onmousedown={() => handleTeacherSelect(`${user.name}|${user.surname}|${user.id}`)}
                                   class="items-start px-4 py-2"
                                 >
                                   <p>{user.name} {user.surname}</p>
