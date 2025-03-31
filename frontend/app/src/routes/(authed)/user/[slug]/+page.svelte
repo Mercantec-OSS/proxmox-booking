@@ -6,9 +6,17 @@
   import { goto, afterNavigate } from '$app/navigation';
 
   const { data } = $props();
-
   userStore.set(data.userInfo);
   vmListStore.set(data.vmData);
+
+  $effect(() => {
+    if (data.userInfo) {
+      userStore.set(data.userInfo);
+    }
+    if (data.vmData) {
+      vmListStore.set(data.vmData);
+    }
+  });
 
   let userAuthed = $derived($userStore.role === 'Admin' || $userStore.role === 'Teacher');
 
@@ -40,16 +48,15 @@
     {/if}
   </div>
 
-  {#if $userStore.role === 'Admin' || $userStore.role === 'Teacher'}
+  {#if data.vmData && !data.errorMessage}
     <div class="flex flex-grow flex-col">
       <!-- List of all bookings -->
       <BookingList />
     </div>
-  {:else}
+  {:else if data.errorMessage === 'Insufficient privileges to perform this action'}
     <div class="flex-grow flex justify-center items-center">
       <div class="flex flex-col gap-y-6 items-center justify-center">
-        <img src="/images/wumpus.gif" alt="Wumpus Beyond Curious" class="w-1/4 h-auto" />
-        <p class="text-muted-foreground select-none">You are not authorized to view {data.userData.name}'s bookings</p>
+        <p class="text-muted-foreground select-none">You are not authorized to view this user's bookings</p>
       </div>
     </div>
   {/if}
