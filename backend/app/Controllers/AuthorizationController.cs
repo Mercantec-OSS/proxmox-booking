@@ -135,8 +135,8 @@ public class AuthorizationController(
         User newUser = new()
         {
             Id = 0,
-            Name = userDto.Name,
-            Surname = userDto.Surname,
+            Name = userDto.Name.Trim(),
+            Surname = userDto.Surname.Trim(),
             Email = userDto.Email.ToLower(),
             Role = userRole.ToString(),
             Password = Password.GetHash(userDto.Password),
