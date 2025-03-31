@@ -96,7 +96,7 @@
       vmBookingInput.expiringAt = new Date(vmCalendarDatePicked).toISOString();
       await vmService.createVMBooking(vmBookingInput);
       toast.success(`VM booking created`);
-      goto('/');
+      history.back();
     } catch (error) {
       toast.error(error.message);
     } finally {

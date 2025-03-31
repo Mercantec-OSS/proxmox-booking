@@ -18,7 +18,7 @@
       toast.error(data.errorMessage);
 
       if (data.errorMessage === 'Invalid user ID' || data.errorMessage === 'User not found') {
-        goto('/');
+        history.back();
       }
     }
 

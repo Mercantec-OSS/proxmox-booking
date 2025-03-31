@@ -59,7 +59,7 @@
       toast.success('Refreshed booking details');
     } catch (error) {
       toast.error(error.message);
-      if (error.message === 'Booking not found') goto('/');
+      if (error.message === 'Booking not found') history.back();
     }
   }
 
@@ -75,7 +75,7 @@
     try {
       await vmService.deleteVMBooking($selectedBookingStore.id);
       vmListStore.set(await vmService.getVMBookings());
-      goto('/');
+      history.back();
       toast.success(`Deleted booking #${$selectedBookingStore.id}`);
     } catch (error) {
       toast.error(error.message);

@@ -4,16 +4,16 @@
   import { vmService } from '$lib/services/vm-service';
   import { Skeleton } from '$lib/components/ui/skeleton/index.js';
 
-  let { vcenterInfo } = $props();
+  let { clusterInfo } = $props();
 
   // Fetches latest resource utilization data
-  async function fetchVcenterInfo() {
-    vcenterInfo = await vmService.getClusterInfo();
+  async function fetchClusterInfo() {
+    clusterInfo = await vmService.getClusterInfo();
   }
 
   // Set up polling with interval cleanup on leave
   $effect(() => {
-    const updateIntervalId = setInterval(fetchVcenterInfo, 60000);
+    const updateIntervalId = setInterval(fetchClusterInfo, 60000);
     return () => clearInterval(updateIntervalId);
   });
 </script>
@@ -38,8 +38,8 @@
         <Table.Row>
           {#each ['cpuTotal', 'cpuUsage', 'ramTotal', 'ramUsage', 'storageTotal', 'storageUsage'] as resource}
             <Table.Cell>
-              {#if vcenterInfo?.[resource]}
-                {vcenterInfo[resource]}
+              {#if clusterInfo?.[resource]}
+                {clusterInfo[resource]}
               {:else}
                 <Skeleton class="h-6 w-20 rounded-lg" />
               {/if}

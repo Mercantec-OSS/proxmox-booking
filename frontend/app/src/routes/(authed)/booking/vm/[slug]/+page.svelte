@@ -80,7 +80,7 @@
       loadingDelete = true;
       await vmService.deleteVMBooking($selectedBookingStore.id);
       toast.success('Booking deleted');
-      goto('/');
+      history.back();
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -95,11 +95,10 @@
 
   function checkErrors() {
     if (errorMessage) {
-      console.error(errorMessage);
       toast.error(errorMessage);
-
       selectedBookingStore.set(null);
-      goto('/');
+
+      setTimeout(() => history.back(), 1500);
       return true;
     }
     return false;

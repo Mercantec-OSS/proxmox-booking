@@ -2,11 +2,11 @@ import { vmService } from '$lib/services/vm-service';
 
 export async function load({ cookies }) {
   let vmData = [];
-  let vcenterInfo = null;
+  let clusterInfo = null;
   const token = cookies.get('token');
 
   try {
-    [vmData, vcenterInfo] = await Promise.all([
+    [vmData, clusterInfo] = await Promise.all([
       vmService.getVMBookingsBackend(token).catch((error) => {
         console.error(error);
         return [];
@@ -22,6 +22,6 @@ export async function load({ cookies }) {
 
   return {
     vmData,
-    vcenterInfo
+    clusterInfo
   };
 }
