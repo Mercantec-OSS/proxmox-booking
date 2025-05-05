@@ -10,10 +10,6 @@
 
   let { attachIsoDialogOpen = $bindable() } = $props();
 
-  $effect(() => {
-    systemConfig.vmName = $selectedBookingStore.name;
-  });
-
   let loadingStates = {
     attachIso: false,
     detachIso: false
@@ -22,6 +18,10 @@
   let systemConfig = $state({
     vmName: null,
     isoName: null
+  });
+
+  $effect(() => {
+    systemConfig.vmName = $selectedBookingStore.uuid;
   });
 
   let isoOptions = $derived($selectedBookingStore.isoList);
