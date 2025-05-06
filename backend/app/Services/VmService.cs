@@ -234,7 +234,7 @@ public class VmService(ProxmoxApiService proxmoxApiService, IServiceScopeFactory
         List<ProxmoxVmDto> templates = await proxmoxApiService.GetProxmoxTemplates();
         List<ProxmoxStorageDto> storages = await proxmoxApiService.GetProxmoxStorages();
 
-        ProxmoxStorageDto? storage = storages.FirstOrDefault(storage => storage.Storage.ToLower() == "vm_data");
+        ProxmoxStorageDto? storage = storages.FirstOrDefault(storage => storage.Storage.ToLower() == Config.PROXMOX_DATA_STORAGE.ToLower());
         int usedStorage = 0;
         int totalStorage = 0;
         float storageUsagePercent = 0;

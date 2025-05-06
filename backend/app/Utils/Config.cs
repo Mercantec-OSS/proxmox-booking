@@ -15,6 +15,7 @@ public static class Config
     public static string PROXMOX_TOKEN_ID => ParseVariable("PROXMOX_TOKEN_ID");
     public static string PROXMOX_TOKEN_SECRET => ParseVariable("PROXMOX_TOKEN_SECRET");
     public static string PROXMOX_ISO_STORAGE => ParseVariable("PROXMOX_ISO_STORAGE");
+    public static string PROXMOX_DATA_STORAGE => ParseVariable("PROXMOX_DATA_STORAGE");
     public static string PROXMOX_ADDR_IP => GetProxmoxAddressIp();
 
     private static string ParseVariable(string variableName) {

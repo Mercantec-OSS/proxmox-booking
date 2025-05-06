@@ -292,7 +292,7 @@ public class ProxmoxApiService
     {
         var requestData = new Dictionary<string, object>
         {
-            { "scsi1", $"CephFS-Disks:{sizeGb},cache=writeback,discard=on" },
+            { "scsi1", $"{Config.PROXMOX_DATA_STORAGE}:{sizeGb},cache=writeback,discard=on" },
         };
 
         var content = new StringContent(JsonSerializer.Serialize(requestData), Encoding.UTF8, "application/json");

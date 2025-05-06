@@ -16,7 +16,8 @@
         "PROXMOX_ADDR": "addr:port",
         "PROXMOX_TOKEN_ID": "root@pam!tokenname",
         "PROXMOX_TOKEN_SECRET": "token-secret",
-        "PROXMOX_ISO_STORAGE": "Ceph-ISO"
+        "PROXMOX_ISO_STORAGE": "Ceph-ISO",
+        "PROXMOX_DATA_STORAGE": "VM_Data"
       }
     }
   }
