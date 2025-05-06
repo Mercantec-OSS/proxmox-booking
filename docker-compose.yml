@@ -28,6 +28,7 @@ services:
       - PROXMOX_TOKEN_ID=${PROXMOX_TOKEN_ID}
       - PROXMOX_TOKEN_SECRET=${PROXMOX_TOKEN_SECRET}
       - PROXMOX_ISO_STORAGE=${PROXMOX_ISO_STORAGE}
+      - PROXMOX_DATA_STORAGE=${PROXMOX_DATA_STORAGE}
 
   frontend:
     container_name: booking-frontend
