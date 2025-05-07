@@ -24,7 +24,7 @@
     selectedStorage: null
   });
 
-  const storageOptions = ['100', '200', '500'];
+  const storageOptions = [50, 100, 200, 500];
 
   let constraints = $derived({
     storage: { validSizes: storageOptions }
