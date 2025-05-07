@@ -150,7 +150,10 @@
 
   let sorting = $state([]);
   let globalFilter = $state('');
-  let columnVisibility = $state({});
+  let columnVisibility = $state({
+    message: false, // Hide the message column by default
+    assignedName: false // Hide the assignedName column by default
+  });
   // TanStack Table's internal row selection state (keyed by row ID)
   let rowSelection = $state({});
 
