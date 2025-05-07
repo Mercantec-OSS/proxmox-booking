@@ -12,7 +12,7 @@
   let { attachStorageDialogOpen = $bindable() } = $props();
 
   $effect(() => {
-    systemConfig.vmName = $selectedBookingStore.name;
+    systemConfig.vmName = $selectedBookingStore.uuid;
   });
 
   let loadingStates = {
