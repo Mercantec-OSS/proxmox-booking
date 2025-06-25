@@ -92,14 +92,14 @@ public class VmService(ProxmoxApiService proxmoxApiService, IServiceScopeFactory
     {
         ProxmoxVmDto vm = await GetVmByNameAsync(booking.Name);
 
-        // search internal ip (starts with 10.x.x.x)
+        // search internal ip (starts with 10.133.x.x)
         List<ProxmoxNetworkDeviceDto> devices = await proxmoxApiService.GetVmNetworkDevices(vm);
         string ip = "";
         foreach (var device in devices)
         {
             foreach (var ipAddr in device.IpAddresses)
             {
-                if (ipAddr.IsIpv4 && ipAddr.IpAddress.StartsWith("10."))
+                if (ipAddr.IsIpv4 && ipAddr.IpAddress.StartsWith("10.133."))
                 {
                     ip = ipAddr.IpAddress;
                     break;
